@@ -11,4 +11,6 @@
 
     <dimen name="session_root_padding">16dp</dimen>
     <dimen name="session_vertical_margin">8dp</dimen>
+    <item name="guideline35" type="dimen" format="float">0.35</item>
+    <item name="guideline40" type="dimen" format="float">0.4</item>
 </resources>

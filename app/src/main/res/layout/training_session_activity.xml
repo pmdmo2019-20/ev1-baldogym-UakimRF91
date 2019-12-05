@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/session_root_padding"
     tools:context=".ui.trainingsession.TrainingSessionActivity">
 
     <ImageView
@@ -11,10 +12,101 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:maxWidth="64dp"
-        android:maxHeight="64dp"
         android:scaleType="fitCenter"
-        app:layout_constraintTop_toBottomOf="@id/lbl_time"
-        app:layout_constraintStart_toStartOf="@id/lbl_time"
-        app:layout_constraintEnd_toEndOf="@id/lbl_time"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/guideline40" />
+
+    <TextView
+        android:id="@+id/lbl_name_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        tools:text="Nombre" />
+
+    <TextView
+        android:id="@+id/lbl_trainer_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Trainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_name_session" />
+
+    <TextView
+        android:id="@+id/lbl_day_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Monday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_trainer_session" />
+
+    <TextView
+        android:id="@+id/lbl_time_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="8:00 - 9:00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_day_session" />
+
+    <TextView
+        android:id="@+id/lbl_room_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Body room"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_time_session" />
+
+    <TextView
+        android:id="@+id/lbl_description_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_room_session" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sa_day_panel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:paddingStart="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:id="@+id/btn_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Join"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/lbl_participants_session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="40 participants"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

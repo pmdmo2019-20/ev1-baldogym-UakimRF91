@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.schedule_activity_item.view.*
 class ScheduleActivityAdapter : ListAdapter<TrainingSession, ScheduleActivityAdapter.ViewHolder>(SessionDiffCallback) {
 
     var onClickListener: ((Int) -> Unit)? = null
+    var onSessionListener: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -33,6 +34,9 @@ class ScheduleActivityAdapter : ListAdapter<TrainingSession, ScheduleActivityAda
         init {
             btn_join.setOnClickListener {
                 onClickListener?.invoke(adapterPosition)
+            }
+            containerView.setOnClickListener {
+                onSessionListener?.invoke(adapterPosition)
             }
         }
 

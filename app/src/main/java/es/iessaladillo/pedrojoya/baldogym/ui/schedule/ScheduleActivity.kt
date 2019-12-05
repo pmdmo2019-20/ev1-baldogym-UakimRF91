@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.LocalRepository
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
+import es.iessaladillo.pedrojoya.baldogym.ui.trainingsession.TrainingSessionActivity
 import kotlinx.android.synthetic.main.schedule_activity.*
 
 class ScheduleActivity : AppCompatActivity() {
@@ -22,6 +23,13 @@ class ScheduleActivity : AppCompatActivity() {
 
     private val listAdapter: ScheduleActivityAdapter = ScheduleActivityAdapter().also {
         it.onClickListener = { position -> setSessionJoined(position) }
+        it.onSessionListener = { position -> goToSession(position) }
+    }
+
+    private fun goToSession(position: Int) {
+        val session = listAdapter.currentList[position]
+        navigateToTrainingSessionActivity(session)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +62,11 @@ class ScheduleActivity : AppCompatActivity() {
         schedule_sunday.setOnClickListener {
             viewModel.filterSunday()
         }
+    }
 
+    private fun navigateToTrainingSessionActivity(session: TrainingSession) {
+        val intent = TrainingSessionActivity.newIntent(this, session)
+        startActivity(intent)
     }
 
     private fun setupRecyclerView() {
