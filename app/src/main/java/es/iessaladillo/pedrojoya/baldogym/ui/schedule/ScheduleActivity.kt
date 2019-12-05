@@ -1,23 +1,27 @@
 package es.iessaladillo.pedrojoya.baldogym.ui.schedule
 
 import android.os.Bundle
+import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.baldogym.R
+import es.iessaladillo.pedrojoya.baldogym.data.LocalRepository
+import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import kotlinx.android.synthetic.main.schedule_activity.*
 
 class ScheduleActivity : AppCompatActivity() {
 
-    //Este es nuestro adaptador. Es un campo de la clase, no un método
-    //also nos permite recibe como it el objeto de MainActivityAdapter y lo retorna después de ejecutar la lambda
-    private val listAdapter: ScheduleActivityAdapter = ScheduleActivityAdapter().also {
-        //Se le da funcionalidad a los tipos función del adaptador.
-        //Si se llama a onCheckListener (se llamaba pulsando en el viewholder), para la posición en la que este, llama a checkMenuItem
-        it.onClickListener = { position -> setSessionJoined(position) }
+    private val viewModel: ScheduleActivityViewModel by viewModels {
+        ScheduleActivityViewModelFactory(LocalRepository, application)
+    }
 
+    private val listAdapter: ScheduleActivityAdapter = ScheduleActivityAdapter().also {
+        it.onClickListener = { position -> setSessionJoined(position) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +33,28 @@ class ScheduleActivity : AppCompatActivity() {
 
     private fun setupViews() {
         setupRecyclerView()
-        constraintLayoutScheduleActivity.setOnClickListener {
-            changeDayOfWeek()
+        schedule_monday.setOnClickListener {
+            viewModel.filterMonday()
         }
-    }
+        schedule_tuesday.setOnClickListener {
+            viewModel.filterTuesday()
+        }
+        schedule_wednesday.setOnClickListener {
+            viewModel.filterWednesday()
+        }
+        schedule_thursday.setOnClickListener {
+            viewModel.filterThursday()
+        }
+        schedule_friday.setOnClickListener {
+            viewModel.filterFriday()
+        }
+        schedule_saturday.setOnClickListener {
+            viewModel.filterSaturday()
+        }
+        schedule_sunday.setOnClickListener {
+            viewModel.filterSunday()
+        }
 
-    private fun changeDayOfWeek() {
-        //METODOS PARA CAMBIAR DE MON A TUE
     }
 
     private fun setupRecyclerView() {
@@ -49,11 +68,24 @@ class ScheduleActivity : AppCompatActivity() {
     }
 
     private fun observeViewModelData() {
-        //HACER LOS OBSERVE
+        viewModel.sessions.observe(this) {
+            showSessions(it)
+        }
+
+        viewModel.currentDayTitle.observe(this) {
+            schedule_today.text = it
+        }
+    }
+
+    private fun showSessions(sessions: List<TrainingSession>) {
+        lstSessions.post {
+            listAdapter.submitList(sessions)
+        }
     }
 
     private fun setSessionJoined(position: Int) {
-        //METODOS PARA DEFINIR QUÉ PASA CUANDO ALGUIEN LE DA A JOIN
+        val session = listAdapter.currentList[position]
+        viewModel.markSessionAsJoined(session, !session.userJoined)
     }
 
 }

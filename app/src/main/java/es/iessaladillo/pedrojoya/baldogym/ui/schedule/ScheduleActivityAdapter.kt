@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.schedule_activity.*
 import kotlinx.android.synthetic.main.schedule_activity_item.*
 import kotlinx.android.synthetic.main.schedule_activity_item.view.*
 

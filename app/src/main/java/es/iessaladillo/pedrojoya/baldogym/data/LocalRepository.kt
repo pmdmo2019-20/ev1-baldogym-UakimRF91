@@ -7,7 +7,49 @@ import java.util.concurrent.ThreadLocalRandom
 
 object LocalRepository : Repository {
 
-    // TODO:
+    private val sessions: MutableList<TrainingSession> = ArrayList(createWeekSchedule())
+
+    override fun markSessionAsJoined(id: Long) {
+        val position = sessions.indexOf(sessions.find { session -> session.id == id })
+        val currentParticipants = sessions[position].participants
+        val newSession = sessions[position].copy(userJoined = true, participants = currentParticipants + 1)
+        sessions[position] = newSession
+    }
+
+    override fun markSessionAsQuitted(id: Long) {
+        val position = sessions.indexOf(sessions.find { session -> session.id == id })
+        val currentParticipants = sessions[position].participants
+        val newSession = sessions[position].copy(userJoined = false, participants = currentParticipants -1)
+        sessions[position] = newSession    }
+
+    override fun querySessionsOfMonday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.MONDAY }.sortedByDescending { session -> session.time }
+    }
+
+    override fun querySessionsOfTuesday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.TUESDAY }.sortedByDescending { session -> session.time }
+    }
+
+    override fun querySessionsOfWednesday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.WEDNESDAY }.sortedByDescending { session -> session.time }
+    }
+
+    override fun querySessionsOfThursday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.THURSDAY }.sortedByDescending { session -> session.time }
+    }
+
+    override fun querySessionsOfFriday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.FRIDAY }.sortedByDescending { session -> session.time }
+    }
+
+    override fun querySessionsOfSaturday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.SATURDAY }.sortedByDescending { session -> session.time }
+    }
+
+    override fun querySessionsOfSunday(): List<TrainingSession> {
+        return sessions.filter { session -> session.weekDay == WeekDay.SUNDAY }.sortedByDescending { session -> session.time }
+    }
+
 
     private fun createWeekSchedule(): List<TrainingSession> {
 

@@ -11,7 +11,7 @@ import es.iessaladillo.pedrojoya.baldogym.data.entity.WeekDay
 class ScheduleActivityViewModel(private val repository: Repository,
                                 private val application: Application) : ViewModel() {
 
-    private val _sessions: MutableLiveData<List<TrainingSession>> = MutableLiveData()
+    private val _sessions: MutableLiveData<List<TrainingSession>> = MutableLiveData(repository.querySessionsOfMonday())
     val sessions: LiveData<List<TrainingSession>>
         get() = _sessions
 
