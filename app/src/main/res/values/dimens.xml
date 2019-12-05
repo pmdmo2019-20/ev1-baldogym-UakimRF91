@@ -7,10 +7,11 @@
 
     <dimen name="schedule_lblEmptyView_drawablePadding">16dp</dimen>
 
-    <dimen name="schedule_item_padding">8dp</dimen>
+    <dimen name="schedule_item_padding">12dp</dimen>
 
     <dimen name="session_root_padding">16dp</dimen>
     <dimen name="session_vertical_margin">8dp</dimen>
+    <dimen name="schedule_max_size_img">80dp</dimen>
     <item name="guideline35" type="dimen" format="float">0.35</item>
     <item name="guideline40" type="dimen" format="float">0.4</item>
 </resources>

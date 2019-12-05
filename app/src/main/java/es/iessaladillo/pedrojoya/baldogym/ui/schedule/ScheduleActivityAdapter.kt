@@ -47,11 +47,11 @@ class ScheduleActivityAdapter : ListAdapter<TrainingSession, ScheduleActivityAda
                 containerView.lbl_name_session.text = name
                 containerView.lbl_trainer_session.text = trainer
                 containerView.lbl_room_session.text = room
-                containerView.lbl_participants.text = participants.toString()
+                containerView.lbl_participants.text = String.format("%s %s", participants.toString(), "participants")
                 if (userJoined) {
-                    containerView.btn_join.text = R.string.schedule_item_join.toString()
+                    containerView.btn_join.text = containerView.resources.getText(R.string.schedule_item_quit)
                 } else {
-                    containerView.btn_join.text = R.string.schedule_item_quit.toString()
+                    containerView.btn_join.text = containerView.resources.getText(R.string.schedule_item_join)
                 }
             }
         }

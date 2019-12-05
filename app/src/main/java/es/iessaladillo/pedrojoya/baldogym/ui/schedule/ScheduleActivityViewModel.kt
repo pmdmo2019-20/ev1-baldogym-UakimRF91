@@ -21,7 +21,7 @@ class ScheduleActivityViewModel(private val repository: Repository,
         get() = _currentDay
 
     private val _currentDayTitle: MutableLiveData<String> =
-        MutableLiveData(currentDay.value!!.nameResId.toString())
+        MutableLiveData(application.getString(currentDay.value!!.nameResId))
     val currentDayTitle: LiveData<String>
         get() = _currentDayTitle
 
@@ -29,43 +29,42 @@ class ScheduleActivityViewModel(private val repository: Repository,
     // Hace que se muestre en el RecyclerView sólo las sesiones de hoy.
     fun filterMonday() {
         _currentDay.value = WeekDay.MONDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
         querySessions(_currentDay.value!!)
     }
 
     fun filterTuesday() {
         _currentDay.value = WeekDay.TUESDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
         querySessions(_currentDay.value!!)
     }
 
     fun filterWednesday() {
         _currentDay.value = WeekDay.WEDNESDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
         querySessions(_currentDay.value!!)
     }
 
     fun filterThursday() {
         _currentDay.value = WeekDay.THURSDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
-        querySessions(_currentDay.value!!)
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
     }
 
     fun filterFriday() {
         _currentDay.value = WeekDay.FRIDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
         querySessions(_currentDay.value!!)
     }
 
     fun filterSaturday() {
         _currentDay.value = WeekDay.SATURDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
         querySessions(_currentDay.value!!)
     }
 
     fun filterSunday() {
         _currentDay.value = WeekDay.SUNDAY
-        _currentDayTitle.value = currentDay.value!!.nameResId.toString()
+        _currentDayTitle.value = application.getString(currentDay.value!!.nameResId)
         querySessions(_currentDay.value!!)
     }
 

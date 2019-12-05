@@ -23,31 +23,31 @@ object LocalRepository : Repository {
         sessions[position] = newSession    }
 
     override fun querySessionsOfMonday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.MONDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.MONDAY }.sortedBy { session -> session.time }
     }
 
     override fun querySessionsOfTuesday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.TUESDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.TUESDAY }.sortedBy { session -> session.time }
     }
 
     override fun querySessionsOfWednesday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.WEDNESDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.WEDNESDAY }.sortedBy { session -> session.time }
     }
 
     override fun querySessionsOfThursday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.THURSDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.THURSDAY }.sortedBy { session -> session.time }
     }
 
     override fun querySessionsOfFriday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.FRIDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.FRIDAY }.sortedBy { session -> session.time }
     }
 
     override fun querySessionsOfSaturday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.SATURDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.SATURDAY }.sortedBy { session -> session.time }
     }
 
     override fun querySessionsOfSunday(): List<TrainingSession> {
-        return sessions.filter { session -> session.weekDay == WeekDay.SUNDAY }.sortedByDescending { session -> session.time }
+        return sessions.filter { session -> session.weekDay == WeekDay.SUNDAY }.sortedBy { session -> session.time }
     }
 
 

@@ -31,7 +31,7 @@ class TrainingSessionActivity : AppCompatActivity() {
             lbl_time_session.text = time
             lbl_room_session.text = room
             lbl_description_session.text = description
-            lbl_participants_session.text = participants.toString()
+            lbl_participants_session.text = String.format("%s %s", participants.toString(), "participantes")
             if (userJoined) {
                 btn_join.text = R.string.schedule_item_quit.toString()
             } else {
