@@ -10,4 +10,64 @@
 
     <!-- TODO -->
 
+    <TextView
+        android:id="@+id/lbl_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="19:00 - 20:00" />
+
+    <ImageView
+        android:id="@+id/imgSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintTop_toBottomOf="@id/lbl_time"
+        app:layout_constraintStart_toStartOf="@id/lbl_time"
+        app:layout_constraintEnd_toEndOf="@id/lbl_time"/>
+
+    <TextView
+        android:id="@+id/lbl_name_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="19:00 - 20:00"
+        app:layout_constraintStart_toEndOf="@+id/lbl_time"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_time" />
+
+    <TextView
+        android:id="@+id/lbl_trainer_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Trainer 1"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_name_session"
+        app:layout_constraintStart_toStartOf="@+id/lbl_name_session" />
+
+    <TextView
+        android:id="@+id/lbl_room_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Sala 2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/lbl_trainer_session"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_trainer_session" />
+
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Join" />
+
+    <TextView
+        android:id="@+id/lbl_participants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="14 participants"
+        app:layout_constraintEnd_toEndOf="@+id/btn_join"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
